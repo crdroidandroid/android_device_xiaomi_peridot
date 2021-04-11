@@ -22,8 +22,10 @@ android_app {
     privileged: true,
 
     static_libs: [
+        "androidx.core_core",
         "org.lineageos.settings.resources",
-        "vendor.xiaomi.hardware.displayfeature-V2-java"
+        "vendor.xiaomi.hardware.displayfeature-V2-java",
+        "vendor.xiaomi.hw.touchfeature-V1-java"
     ],
 
     optimize: {
