@@ -5,7 +5,7 @@
 //
 
 android_app {
-    name: "XiaomiParts",
+    name: "DT2W-Peridot",
     certificate: "platform",
     srcs: ["src/**/*.java"],
     platform_apis: true,

@@ -175,6 +175,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libdrm.vendor
 
+# DT2W
+PRODUCT_PACKAGES += \
+    DT2W-Peridot
+
 # DumpState
 PRODUCT_PACKAGES += \
     android.hardware.dumpstate-V1-ndk.vendor
@@ -388,10 +392,6 @@ PRODUCT_PACKAGES += \
     WifiOverlayPeridot \
     WifiOverlayPeridotPOCO \
     WifiOverlayPeridotRedmi
-
-# Parts
-PRODUCT_PACKAGES += \
-    XiaomiParts
 
 # Partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
