@@ -38,27 +38,45 @@ import org.lineageos.settings.doze.PocketService;
 import org.lineageos.settings.thermal.ThermalUtils;
 import org.lineageos.settings.thermal.ThermalTileService;
 import org.lineageos.settings.refreshrate.RefreshUtils;
+import org.lineageos.settings.touchsampling.TouchSamplingUtils;
+import org.lineageos.settings.touchsampling.TouchSamplingService;
 
 public class BootCompletedReceiver extends BroadcastReceiver {
-    private static final boolean DEBUG = false;
+    private static final boolean DEBUG = true;
     private static final String TAG = "XiaomiParts";
 
     @Override
     public void onReceive(final Context context, Intent intent) {
-        if (DEBUG)
-            Log.d(TAG, "Received boot completed intent");
-        // Display
-        context.startServiceAsUser(new Intent(context, ColorModeService.class),
-                UserHandle.CURRENT);        
-        DozeUtils.onBootCompleted(context);
-        ThermalUtils.startService(context);
-        RefreshUtils.startService(context);
-        overrideHdrTypes(context);
-        // Pocket
-        PocketService.startService(context);
-        //thermal tile service
-        Intent thermalServiceIntent = new Intent(context, ThermalTileService.class);
-        context.startServiceAsUser(thermalServiceIntent, UserHandle.CURRENT);
+        if (DEBUG) {
+            Log.d(TAG, "Received broadcast: " + intent.getAction());
+        }
+
+        if (Intent.ACTION_BOOT_COMPLETED.equals(intent.getAction())) {
+            // Display
+            context.startServiceAsUser(new Intent(context, ColorModeService.class), UserHandle.CURRENT);
+            DozeUtils.onBootCompleted(context);
+            ThermalUtils.startService(context);
+            RefreshUtils.startService(context);
+            overrideHdrTypes(context);
+
+            // Restore touch sampling rate
+            TouchSamplingUtils.restoreSamplingValue(context);
+
+            // Pocket service
+            PocketService.startService(context);
+
+            // Thermal tile service
+            Intent thermalServiceIntent = new Intent(context, ThermalTileService.class);
+            context.startServiceAsUser(thermalServiceIntent, UserHandle.CURRENT);
+
+            // Register unlock receiver for restoring HTSR
+            IntentFilter filter = new IntentFilter(Intent.ACTION_USER_PRESENT);
+            context.registerReceiver(new UnlockReceiver(), filter);
+
+            // Start TouchSamplingService to restore sampling rate
+            Intent touchSamplingServiceIntent = new Intent(context, TouchSamplingService.class);
+            context.startServiceAsUser(touchSamplingServiceIntent, UserHandle.CURRENT);
+        }
     }
 
     private static void overrideHdrTypes(Context context) {
