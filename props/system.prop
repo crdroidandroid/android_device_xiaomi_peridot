@@ -19,6 +19,9 @@ persist.dbg.wfc_avail_ovr=1
 # LMK
 ro.config.low_ram=false
 
+# Logging
+persist.vendor.camera.logInfoMask=false
+
 # Radio Options
 persist.radio.volte.dan_support=true
 persist.radio.rat_on=combine
