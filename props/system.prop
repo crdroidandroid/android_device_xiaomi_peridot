@@ -16,6 +16,9 @@ persist.dbg.volte_avail_ovr=1
 persist.dbg.vt_avail_ovr=1
 persist.dbg.wfc_avail_ovr=1
 
+# LMK
+ro.config.low_ram=false
+
 # Radio Options
 persist.radio.volte.dan_support=true
 persist.radio.rat_on=combine
