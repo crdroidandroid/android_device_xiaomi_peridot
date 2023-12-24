@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2020 The LineageOS Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+    <!-- Xiaomi Parts -->
+    <string name="app_name">Xiaomi Parts</string>
+
+    <!-- Clear Speaker -->
+    <string name="clear_speaker_title">Hoparlörü temizle</string>
+    <string name="clear_speaker_summary">Hoparlörü temizlemek için 30 saniyelik bir ses çalın</string>
+    <string name="clear_speaker_description">Hoparlörünüzün tozdan dolayı hafifçe tıkandığını fark ederseniz bu özelliği bir veya iki kez çalıştırın. Medya ses seviyesini maksimuma ayarlayın.\n\nHoparlör yoğun bir şekilde engellenmişse, hoparlör aşağı bakacak şekilde cihazınızı sallayarak bu özelliği 2-5 kez çalıştırın.\n\nUYARI: Tüm kulaklıkların takılı olmadığından emin olun.</string>
+</resources>
