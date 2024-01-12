@@ -19,4 +19,7 @@
 
     <!-- The padding on the start of the statusbar -->
     <dimen name="status_bar_padding_start">36px</dimen>
+
+    <!-- Pixel pitch of the device. um/px -->
+    <item name="pixel_pitch" format="float" type="dimen">54.5</item>
 </resources>
