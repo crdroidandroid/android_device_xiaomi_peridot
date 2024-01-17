@@ -22,4 +22,17 @@
     <string name="clear_speaker_title">Hoparlörü temizle</string>
     <string name="clear_speaker_summary">Hoparlörü temizlemek için 30 saniyelik bir ses çalın</string>
     <string name="clear_speaker_description">Hoparlörünüzün tozdan dolayı hafifçe tıkandığını fark ederseniz bu özelliği bir veya iki kez çalıştırın. Medya ses seviyesini maksimuma ayarlayın.\n\nHoparlör yoğun bir şekilde engellenmişse, hoparlör aşağı bakacak şekilde cihazınızı sallayarak bu özelliği 2-5 kez çalıştırın.\n\nUYARI: Tüm kulaklıkların takılı olmadığından emin olun.</string>
+
+    <!-- Thermal Profiles -->
+    <string name="thermal_title">Termal profilleri</string>
+    <string name="thermal_summary">Uygulama başına termal profili yapılandırması</string>
+    <string name="thermal_default">Varsayılan</string>
+    <string name="thermal_benchmark">Performans</string>
+    <string name="thermal_browser">Tarayıcı</string>
+    <string name="thermal_camera">Kamera</string>
+    <string name="thermal_dialer">Çevirici</string>
+    <string name="thermal_gaming">Oyun</string>
+    <string name="thermal_navigation">Navigasyon</string>
+    <string name="thermal_streaming">Yayın</string>
+    <string name="thermal_video">Video</string>
 </resources>
