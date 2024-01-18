@@ -23,6 +23,13 @@
     <string name="clear_speaker_summary">Hoparlörü temizlemek için 30 saniyelik bir ses çalın</string>
     <string name="clear_speaker_description">Hoparlörünüzün tozdan dolayı hafifçe tıkandığını fark ederseniz bu özelliği bir veya iki kez çalıştırın. Medya ses seviyesini maksimuma ayarlayın.\n\nHoparlör yoğun bir şekilde engellenmişse, hoparlör aşağı bakacak şekilde cihazınızı sallayarak bu özelliği 2-5 kez çalıştırın.\n\nUYARI: Tüm kulaklıkların takılı olmadığından emin olun.</string>
 
+    <!-- Per-app refresh rate -->
+    <string name="refresh_title">Uygulama başına yenileme hızı</string>
+    <string name="refresh_summary">Belirli bir uygulama için maksimum yenileme hızını ayarlayın</string>
+    <string name="refresh_default">Varsayılan</string>
+    <string name="refresh_standard">60Hz</string>    
+    <string name="refresh_extreme">120Hz</string>
+
     <!-- Thermal Profiles -->
     <string name="thermal_title">Termal profilleri</string>
     <string name="thermal_summary">Uygulama başına termal profili yapılandırması</string>
