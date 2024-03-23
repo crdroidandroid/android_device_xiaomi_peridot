@@ -26,14 +26,14 @@ import android.os.Looper;
 import android.util.Log;
 
 import androidx.preference.Preference;
-import androidx.preference.PreferenceFragment;
+import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.SwitchPreferenceCompat;
 
 import org.lineageos.settings.R;
 
 import java.io.IOException;
 
-public class ClearSpeakerFragment extends PreferenceFragment implements
+public class ClearSpeakerFragment extends PreferenceFragmentCompat implements
         Preference.OnPreferenceChangeListener {
 
     private static final String TAG = "ClearSpeakerFragment";
