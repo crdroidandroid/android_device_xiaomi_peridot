@@ -21,8 +21,4 @@ android_app {
         "androidx.core_core",
         "androidx.preference_preference",
     ],
-
-    optimize: {
-        proguard_flags_files: ["proguard.flags"],
-    },
 }
