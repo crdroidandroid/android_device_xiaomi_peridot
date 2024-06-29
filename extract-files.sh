@@ -70,6 +70,10 @@ function blob_fixup() {
             [ "$2" = "" ] && return 0
             ${PATCHELF} --remove-needed "android.hidl.base@1.0.so" "${2}"
             ;;
+        vendor/etc/media_codecs.xml|vendor/etc/media_codecs_cliffs_v0.xml|vendor/etc/media_codecs_performance_cliffs_v0.xml)
+            [ "$2" = "" ] && return 0
+            sed -Ei "/media_codecs_(google_audio|google_telephony|google_video|vendor_audio)/d" "${2}"
+            ;;
         *)
             return 1
             ;;
