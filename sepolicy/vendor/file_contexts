@@ -107,3 +107,7 @@
 /sys/devices/platform/goodix_ts.0/switch_report_rate u:object_r:sysfs_htsr:s0
 /sys/devices/virtual/touch/touch_dev/ear_sensor u:object_r:sysfs_tp_virtual_prox:s0
 /sys/devices/virtual/touch/touch_dev/palm_sensor u:object_r:sysfs_tp_virtual_prox:s0
+
+# Vibrator
+/(odm|vendor/odm)/bin/hw/vibratorfeature-wrapper u:object_r:hal_vibrator_default_exec:s0
+/(odm|system/odm|vendor|system/vendor)/bin/hw/vendor\.xiaomi\.hardware\.vibratorfeature\.service u:object_r:hal_vibrator_default_exec:s0
