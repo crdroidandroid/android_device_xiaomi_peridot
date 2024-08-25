@@ -616,7 +616,7 @@ PRODUCT_COPY_FILES += \
 
 # WiFi Display
 PRODUCT_PACKAGES += \
-    android.media.audio.common.types-V2-cpp \
+    android.media.audio.common.types-V3-cpp \
     libdisplayconfig.system.qti \
     libwfdaac_vendor \
     vendor.display.config@2.0 \
