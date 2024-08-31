@@ -70,10 +70,6 @@ function blob_fixup() {
             [ "$2" = "" ] && return 0
             ${PATCHELF} --remove-needed "android.hidl.base@1.0.so" "${2}"
             ;;
-        vendor/bin/init.qcom.usb.sh)
-            [ "$2" = "" ] && return 0
-            sed -i 's/ro.product.marketname/ro.product.odm.marketname/g' "${2}"
-            ;;
         *)
             return 1
             ;;
