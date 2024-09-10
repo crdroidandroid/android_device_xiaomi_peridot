@@ -423,97 +423,97 @@
     {
       "PowerHint": "INTERACTION",
       "Node": "UclampTAMin",
-      "Duration": 9000,
+      "Duration": 3000,
       "Value": "50"
     },
     {
       "PowerHint": "INTERACTION",
       "Node": "UclampTALatency",
-      "Duration": 9000,
+      "Duration": 3000,
       "Value": "1"
     },
     {
       "PowerHint": "INTERACTION",
       "Node": "SchedBusyHystNs",
-      "Duration": 200,
+      "Duration": 3000,
       "Value": "99000000"
     },
     {
       "PowerHint": "INTERACTION",
       "Node": "SchedBusyHystEnableCPUs",
-      "Duration": 200,
+      "Duration": 3000,
       "Value": "255"
     },
     {
       "PowerHint": "INTERACTION",
       "Node": "SchedMinTaskUtilForBoost",
-      "Duration": 200,
+      "Duration": 3000,
       "Value": "0"
     },
     {
       "PowerHint": "INTERACTION",
       "Node": "SchedMinTaskUtilForColoc",
-      "Duration": 200,
+      "Duration": 3000,
       "Value": "0"
     },
     {
       "PowerHint": "INTERACTION",
       "Node": "SchedMinTaskUtilForUclamp",
-      "Duration": 200,
+      "Duration": 3000,
       "Value": "0"
     },
     {
       "PowerHint": "INTERACTION",
       "Node": "CPUBWHystTriggerCount",
-      "Duration": 200,
+      "Duration": 3000,
       "Value": "0"
     },
     {
       "PowerHint": "INTERACTION",
       "Node": "CPUBWHystLength",
-      "Duration": 200,
+      "Duration": 3000,
       "Value": "0"
     },
     {
       "PowerHint": "INTERACTION",
       "Node": "CPUBWHistMemory",
-      "Duration": 200,
+      "Duration": 3000,
       "Value": "0"
     },
     {
       "PowerHint": "INTERACTION",
       "Node": "CPUBWMinFreq",
-      "Duration": 200,
+      "Duration": 3000,
       "Value": "1555000"
     },
     {
       "PowerHint": "INTERACTION",
       "Node": "LLCCBWHystTriggerCount",
-      "Duration": 200,
+      "Duration": 3000,
       "Value": "0"
     },
     {
       "PowerHint": "INTERACTION",
       "Node": "LLCCBWHystLength",
-      "Duration": 200,
+      "Duration": 3000,
       "Value": "0"
     },
     {
       "PowerHint": "INTERACTION",
       "Node": "LLCCBWHistMemory",
-      "Duration": 200,
+      "Duration": 3000,
       "Value": "0"
     },
     {
       "PowerHint": "INTERACTION",
       "Node": "LLCCBWMinFreq",
-      "Duration": 200,
+      "Duration": 3000,
       "Value": "600000"
     },
     {
       "PowerHint": "INTERACTION",
       "Node": "L3MinFreq",
-      "Duration": 200,
+      "Duration": 3000,
       "Value": "1132800"
     },
     {
