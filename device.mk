@@ -305,7 +305,8 @@ PRODUCT_PACKAGES += \
     libgatekeeper.vendor \
     libsoft_attestation_cert.vendor \
     libkeymaster_messages.vendor \
-    libkeymaster_portable.vendor
+    libkeymaster_portable.vendor \
+    libcppbor_external.vendor
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.device_id_attestation.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.device_id_attestation.xml \
