@@ -275,6 +275,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     init.qcom.rc \
+    init.peridot.rc \
     init.qti.kernel.rc \
     init.recovery.qcom.rc \
     init.target.rc
