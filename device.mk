@@ -483,7 +483,9 @@ PRODUCT_COPY_FILES += \
 # Shims
 PRODUCT_PACKAGES += \
     libcodec2_shim \
-    libhidlbase_shim
+    libgui_shim \
+    libhidlbase_shim \
+    libinput_shim
 
 # Telephony
 PRODUCT_PACKAGES += \
