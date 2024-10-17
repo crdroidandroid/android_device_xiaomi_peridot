@@ -990,4 +990,7 @@
         <item>30</item>
     </integer-array>
 
+    <!-- Whether the device supports Smart Pixels -->
+    <bool name="config_supportSmartPixels">true</bool>
+
 </resources>
