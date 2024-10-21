@@ -1583,7 +1583,6 @@ vendor/etc/lowi.conf
 vendor/etc/sap.conf
 vendor/etc/seccomp_policy/gnss@2.0-base.policy
 vendor/etc/seccomp_policy/gnss@2.0-edgnss-daemon.policy
-vendor/etc/seccomp_policy/gnss@2.0-qsap-location.policy
 vendor/etc/seccomp_policy/gnss@2.0-xtra-daemon.policy
 vendor/etc/seccomp_policy/gnss@2.0-xtwifi-client.policy
 vendor/etc/vintf/manifest/android.hardware.gnss-aidl-service-qti.xml
@@ -1960,7 +1959,6 @@ vendor/bin/qesdk-secmanager
 vendor/etc/init/qesdk-manager.rc
 vendor/etc/init/qesdk-secmanager.rc
 vendor/etc/seccomp_policy/qesdk.policy
-vendor/etc/seccomp_policy/qesdksec.policy
 vendor/etc/vintf/manifest/qesdk-manager.xml
 vendor/lib64/liblocation_qesdk.so
 vendor/lib64/libqesdk2_0.so
@@ -2030,7 +2028,6 @@ vendor/etc/models/vui/sm8_gr1UsPdk6XsMfcn220819Enpu4FloateAIv34.uim
 vendor/etc/models/vui/sm8_gr3UsMFCN230612eAIv34ENPUv4Float.uim
 vendor/etc/seccomp_policy/qsap_dcfd.policy
 vendor/etc/seccomp_policy/qsap_qapeservice.policy
-vendor/etc/seccomp_policy/qsap_sensors.policy
 vendor/etc/seccomp_policy/qsap_voiceui.policy
 vendor/lib64/libDcfHalFramework.so
 vendor/lib64/libDcfHalLogger.so
@@ -2199,7 +2196,6 @@ vendor/etc/qcril_database/upgrade/other/0012_version_update_ecc_table.sql
 vendor/etc/qcril_database/upgrade/other/0013_version_update_ecc_table.sql
 vendor/etc/qcril_database/upgrade/other/0014_version_update_modules.sql
 vendor/etc/qcril_database/upgrade/other/0015_version_add_iccid_clir_pref_table.sql
-vendor/etc/seccomp_policy/atfwd@2.0.policy
 vendor/etc/seccomp_policy/imsrtp.policy
 vendor/etc/seccomp_policy/qcrilnr@2.0.policy
 vendor/etc/seccomp_policy/qwesd@2.0.policy
@@ -2382,6 +2378,13 @@ vendor/lib64/vendor.qti.ims.rcssipaidlservice-V1-ndk.so
 vendor/lib64/vendor.qti.ims.rcsuceaidlservice-V1-ndk.so
 vendor/lib64/vendor.qti.imsrtpservice@3.0.so
 vendor/lib64/vendor.qti.imsrtpservice@3.1.so
+
+# Seccomp Policy - from houji-user AQ3A.240627.003 release-keys
+vendor/etc/seccomp_policy/atfwd@2.0.policy|8000172f1595d94f84faa443bab2862e7e6b6400
+vendor/etc/seccomp_policy/gnss@2.0-qsap-location.policy|3a026fbb4535edb5c751f75c632364d8d46fec56
+vendor/etc/seccomp_policy/qesdksec.policy|503bf948ffad7b6da9678ed4ab5e4fa7fc8219cb
+vendor/etc/seccomp_policy/qsap_sensors.policy|8fcd82551b6a9445d9c9b04d9a45c306c55d30e4
+vendor/etc/seccomp_policy/wfdhdcphalservice.policy|f7bb51d41ad6fbdfaa036e698b339e5134e0ef95
 
 # Secure element
 vendor/bin/hw/android.hardware.secure_element-service.qti
@@ -2890,7 +2893,6 @@ vendor/bin/wifidisplayhalservice
 vendor/etc/init/android.hardware.drm@1.1-service.wfdhdcp.rc
 vendor/etc/init/com.qualcomm.qti.wifidisplayhal@1.0-service.rc
 vendor/etc/init/wfdvndservice.rc
-vendor/etc/seccomp_policy/wfdhdcphalservice.policy
 vendor/etc/seccomp_policy/wfdvndservice.policy
 vendor/etc/seccomp_policy/wifidisplayhalservice.policy
 vendor/etc/vintf/manifest/android.hardware.drm-service.xml:vendor/etc/vintf/manifest/android.hardware.drm_wfdhdcp-service.xml
