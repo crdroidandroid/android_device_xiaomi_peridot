@@ -15,6 +15,13 @@ attribute hal_aidlbgservice;
 attribute hal_aidlbgservice_client;
 attribute hal_aidlbgservice_server;
 
+attribute vendor_hal_cameraperf;
+attribute vendor_hal_cameraperf_client;
+attribute vendor_hal_cameraperf_server;
+attribute vendor_hal_camerapostproc_xiaomi;
+attribute vendor_hal_camerapostproc_xiaomi_client;
+attribute vendor_hal_camerapostproc_xiaomi_server;
+
 # Displatfeature
 attribute vendor_hal_displayfeature_xiaomi;
 attribute vendor_hal_displayfeature_xiaomi_client;
