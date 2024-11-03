@@ -1,5 +1,6 @@
 type sysfs_therm, fs_type, sysfs_type;
 type vendor_sysfs_displayfeature, fs_type, sysfs_type;
+type sysfs_htsr, fs_type, sysfs_type;
 type sysfs_tp_fodstatus, fs_type, sysfs_type;
 type sysfs_tp_virtual_prox, fs_type, sysfs_type;
 type sys_thermal_wifi_limit, fs_type, sysfs_type;
