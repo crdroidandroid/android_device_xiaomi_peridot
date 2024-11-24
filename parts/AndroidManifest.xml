@@ -202,5 +202,16 @@
             android:exported="false">
         </service>
 
+        <!-- Touch Sampling Tile Service -->
+        <service
+            android:name=".touchsampling.TouchSamplingTileService"
+            android:label="@string/touch_sampling_tile_label"
+            android:icon="@drawable/ic_touch_sampling_tile"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+        </service>
+
     </application>
 </manifest>

@@ -83,4 +83,7 @@
     <string name="htsr_title">Enhanced Touch Responsiveness</string>
     <string name="htsr_enable_title">High Touch Polling Rate</string>
     <string name="htsr_enable_summary">Increases touch polling rate to decrease touch input latency for a smoother experience</string>
+    <string name="touch_sampling_mode_title">High Touch Polling Mode</string>
+    <string name="touch_sampling_mode_notification">High Touch Polling Rate is now active. This reduces touch input latency but may increase battery consumption</string>
+    <string name="touch_sampling_tile_label">Touch Boost</string>
 </resources>

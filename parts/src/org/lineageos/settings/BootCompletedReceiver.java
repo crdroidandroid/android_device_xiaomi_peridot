@@ -40,6 +40,7 @@ import org.lineageos.settings.thermal.ThermalTileService;
 import org.lineageos.settings.refreshrate.RefreshUtils;
 import org.lineageos.settings.touchsampling.TouchSamplingUtils;
 import org.lineageos.settings.touchsampling.TouchSamplingService;
+import org.lineageos.settings.touchsampling.TouchSamplingTileService;
 
 public class BootCompletedReceiver extends BroadcastReceiver {
     private static final boolean DEBUG = true;
@@ -72,6 +73,10 @@ public class BootCompletedReceiver extends BroadcastReceiver {
             // Register unlock receiver for restoring HTSR
             IntentFilter filter = new IntentFilter(Intent.ACTION_USER_PRESENT);
             context.registerReceiver(new UnlockReceiver(), filter);
+
+            // Touch Sampling Tile Service
+            Intent touchSamplingTileServiceIntent = new Intent(context, TouchSamplingTileService.class);
+            context.startServiceAsUser(touchSamplingTileServiceIntent, UserHandle.CURRENT);
 
             // Start TouchSamplingService to restore sampling rate
             Intent touchSamplingServiceIntent = new Intent(context, TouchSamplingService.class);
