@@ -51,53 +51,76 @@ public class BootCompletedReceiver extends BroadcastReceiver {
         if (DEBUG) Log.i(TAG, "Received intent: " + intent.getAction());
         switch (intent.getAction()) {
             case Intent.ACTION_LOCKED_BOOT_COMPLETED:
-                onLockedBootCompleted(context);
+                handleLockedBootCompleted(context);
                 break;
             case Intent.ACTION_BOOT_COMPLETED:
-                onBootCompleted(context);
+                handleBootCompleted(context);
                 break;
         }
     }
 
-    private static void onLockedBootCompleted(Context context) {
-            // Display
-            context.startServiceAsUser(new Intent(context, ColorModeService.class), UserHandle.CURRENT);
-            DozeUtils.onBootCompleted(context);
-            ThermalUtils.startService(context);
-            RefreshUtils.startService(context);
+    private void handleLockedBootCompleted(Context context) {
+        if (DEBUG) Log.i(TAG, "Handling locked boot completed.");
+        try {
+            // Start necessary services
+            startServices(context);
+
+            // Override HDR types
             overrideHdrTypes(context);
 
             // Restore touch sampling rate
             TouchSamplingUtils.restoreSamplingValue(context);
-
-            // Pocket service
-            PocketService.startService(context);
-
-            // Thermal tile service
-            Intent thermalServiceIntent = new Intent(context, ThermalTileService.class);
-            context.startServiceAsUser(thermalServiceIntent, UserHandle.CURRENT);
-
-            // Register unlock receiver for restoring HTSR
-            IntentFilter filter = new IntentFilter(Intent.ACTION_USER_PRESENT);
-            context.registerReceiver(new UnlockReceiver(), filter);
-
-            // Touch Sampling Tile Service
-            Intent touchSamplingTileServiceIntent = new Intent(context, TouchSamplingTileService.class);
-            context.startServiceAsUser(touchSamplingTileServiceIntent, UserHandle.CURRENT);
-
-            // Start TouchSamplingService to restore sampling rate
-            Intent touchSamplingServiceIntent = new Intent(context, TouchSamplingService.class);
-            context.startServiceAsUser(touchSamplingServiceIntent, UserHandle.CURRENT);
+        } catch (Exception e) {
+            Log.e(TAG, "Error during locked boot completed processing", e);
+        }
     }
 
-    private static void overrideHdrTypes(Context context) {
-        // Override HDR types to enable Dolby Vision
-        final DisplayManager dm = context.getSystemService(DisplayManager.class);
-        dm.overrideHdrTypes(Display.DEFAULT_DISPLAY, new int[]{
-                HdrCapabilities.HDR_TYPE_DOLBY_VISION, HdrCapabilities.HDR_TYPE_HDR10,
-                HdrCapabilities.HDR_TYPE_HLG, HdrCapabilities.HDR_TYPE_HDR10_PLUS});
+    private void handleBootCompleted(Context context) {
+        if (DEBUG) Log.i(TAG, "Handling boot completed.");
+        // Add additional boot-completed actions if needed
     }
 
-    private static void onBootCompleted(Context context) {
+    private void startServices(Context context) {
+        if (DEBUG) Log.i(TAG, "Starting services...");
+
+        // Start Color Mode Service
+        context.startServiceAsUser(new Intent(context, ColorModeService.class), UserHandle.CURRENT);
+
+        // Initialize Doze features
+        DozeUtils.onBootCompleted(context);
+
+        // Start Thermal Management Services
+        ThermalUtils.startService(context);
+        context.startServiceAsUser(new Intent(context, ThermalTileService.class), UserHandle.CURRENT);
+
+        // Start Refresh Rate Service
+        RefreshUtils.startService(context);
+
+        // Start Pocket Mode Service
+        PocketService.startService(context);
+
+        // Start Touch Sampling Tile Service
+        context.startServiceAsUser(new Intent(context, TouchSamplingTileService.class), UserHandle.CURRENT);
+
+        // Start Touch Sampling Service
+        context.startServiceAsUser(new Intent(context, TouchSamplingService.class), UserHandle.CURRENT);
+    }
+
+    private void overrideHdrTypes(Context context) {
+        try {
+            final DisplayManager dm = context.getSystemService(DisplayManager.class);
+            if (dm != null) {
+                dm.overrideHdrTypes(Display.DEFAULT_DISPLAY, new int[]{
+                        HdrCapabilities.HDR_TYPE_DOLBY_VISION,
+                        HdrCapabilities.HDR_TYPE_HDR10,
+                        HdrCapabilities.HDR_TYPE_HLG,
+                        HdrCapabilities.HDR_TYPE_HDR10_PLUS
+                });
+                if (DEBUG) Log.i(TAG, "HDR types overridden successfully.");
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "Error overriding HDR types", e);
+        }
     }
 }
+
