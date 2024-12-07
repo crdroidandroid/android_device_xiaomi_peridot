@@ -35,7 +35,6 @@ import android.view.Display.HdrCapabilities;
 import vendor.xiaomi.hw.touchfeature.ITouchFeature;
 
 import org.lineageos.settings.display.ColorModeService;
-import org.lineageos.settings.doze.DozeUtils;
 import org.lineageos.settings.doze.PocketService;
 import org.lineageos.settings.thermal.ThermalUtils;
 import org.lineageos.settings.thermal.ThermalTileService;
@@ -92,9 +91,6 @@ public class BootCompletedReceiver extends BroadcastReceiver {
 
         // Start Color Mode Service
         context.startServiceAsUser(new Intent(context, ColorModeService.class), UserHandle.CURRENT);
-
-        // Initialize Doze features
-        DozeUtils.onBootCompleted(context);
 
         // Start Thermal Management Services
         ThermalUtils.startService(context);
