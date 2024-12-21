@@ -245,16 +245,25 @@ vendor/lib64/vendor.qti.voiceprint@1.0.so
 
 # Audio soundfx
 vendor/lib64/soundfx/libasphere.so
+vendor/lib64/soundfx/libaudiopreprocessing.so
+vendor/lib64/soundfx/libbundlewrapper.so
 vendor/lib64/soundfx/libdlbvol.so
+vendor/lib64/soundfx/libdownmix.so
+vendor/lib64/soundfx/libdynproc.so
+vendor/lib64/soundfx/libeffectproxy.so
+vendor/lib64/soundfx/libhapticgenerator.so
 vendor/lib64/soundfx/libhwdap.so
+vendor/lib64/soundfx/libldnhncr.so
 vendor/lib64/soundfx/libmisoundfx_n2.so
 vendor/lib64/soundfx/libquasar.so
+vendor/lib64/soundfx/libreverbwrapper.so
 vendor/lib64/soundfx/libshoebox.so
 vendor/lib64/soundfx/libspatializer.so
 vendor/lib64/soundfx/libswgamedap.so
 vendor/lib64/soundfx/libswspatializer.so
 vendor/lib64/soundfx/libspatializer_fx.so
 vendor/lib64/soundfx/libswvqe.so
+vendor/lib64/soundfx/libvisualizer.so
 
 # Bluetooth
 vendor/bin/hw/android.hardware.bluetooth@1.1-service-qti
@@ -279,7 +288,6 @@ vendor/lib64/libbluetooth_audio_session_qti.so
 vendor/lib64/libbluetooth_audio_session_qti_2_1.so
 vendor/lib64/libbt-hidlclient.so
 vendor/lib64/libbtnv.so
-vendor/lib64/libsoc_helper.so
 vendor/lib64/vendor.qti.hardware.bluetooth_sar@1.0.so
 vendor/lib64/vendor.qti.hardware.bluetooth_sar@1.1.so
 vendor/lib64/vendor.qti.hardware.bttpi-V3-ndk.so
@@ -298,6 +306,7 @@ vendor/lib64/libsysmon_cdsp_skel.so
 odm/bin/hw/vendor.xiaomi.sensor.citsensorservice.aidl
 odm/etc/init/vendor.xiaomi.sensor.citsensorservice.aidl.rc
 odm/etc/vintf/manifest/vendor.xiaomi.sensor.citsensorservice.aidl.xml
+odm/etc/cit_param_config.json
 vendor/lib64/vendor.xiaomi.sensor.citsensorservice-V1-ndk.so
 
 # CNE
@@ -1127,15 +1136,22 @@ vendor/lib64/libmips.so
 vendor/lib64/libmirf.so
 vendor/lib64/libqshcamera.so
 vendor/lib64/libmialgo.so
+vendor/lib64/libmidebuggerdimpl_vendor.so
+vendor/lib64/libmifaceempty.so
 vendor/lib64/libmemunreachable.so
+vendor/lib64/liboemaids_vendor.so
 vendor/lib64/libface3d_dev.so
 vendor/lib64/libjni_aidenoiserutilv2.so
 vendor/lib64/libjni_imageutil.so
 vendor/lib64/libcameraopt.so
+vendor/lib64/libruy.so
+vendor/lib64/libsagt.so
+vendor/lib64/libsamplefilterplugin.so
 vendor/lib64/libSNPESample.so
 vendor/lib64/libQ6MSFR_manager_stub.so
 vendor/lib64/libFace3DTA.so
 vendor/lib64/libFace3D_hlos.so
+vendor/lib64/libultrahdr.so
 vendor/etc/camera/cameraopt_perf.json
 vendor/etc/camera/cameraopt_vendor.json
 vendor/etc/vintf/manifest/vendor.xiaomi.hardware.quickcamera.xml
@@ -1806,6 +1822,8 @@ odm/lib64/hw/consumerir.qcom.so
 vendor/bin/init.qti.write.sh
 vendor/bin/system_dlkm_modprobe.sh
 vendor/bin/vendor_modprobe.sh
+vendor/lib64/libsoc_helper.so
+vendor/lib64/libsoc_helper_jni.so
 
 # Keymaster
 vendor/bin/hw/android.hardware.keymaster@4.0-service-qti
@@ -1834,6 +1852,7 @@ vendor/lib64/libjc_keymint_nxp.so
 vendor/lib64/libjc_keymint_transport_nxp.so
 vendor/lib64/libstnfc-streset.so
 vendor/lib64/libqtiidentitycredential.so
+vendor/lib64/libkeymaster_messages.so
 vendor/lib64/libqtikeymint.so
 
 # Listen
@@ -1867,6 +1886,8 @@ vendor/etc/vintf/manifest/c2_manifest_vendor.xml
 vendor/etc/vintf/manifest/c2_manifest_vendor_audio.xml
 vendor/lib64/libEvrcSwCodec.so
 vendor/lib64/libQcelp13SwCodec.so
+vendor/lib64/libmediautils_vendor.so
+vendor/lib64/libcodec2_hidl_plugin.so
 vendor/lib64/libcodec2_soft_ac4dec.so
 vendor/lib64/libcodec2_soft_ddpdec.so
 vendor/lib64/libcodec2_store_dolby.so
@@ -2325,7 +2346,6 @@ vendor/etc/seccomp_policy/atfwd@2.0.policy
 vendor/etc/seccomp_policy/imsrtp.policy
 vendor/etc/seccomp_policy/qcrilnr@2.0.policy
 vendor/etc/seccomp_policy/qwesd@2.0.policy
-vendor/etc/ssg/ta_config.json
 vendor/etc/ssg/tz_whitelist.json
 vendor/etc/telephony_packages.xml
 vendor/etc/vintf/manifest/ImsRtpService-aidl.xml
@@ -2376,7 +2396,6 @@ vendor/lib64/libQtiRilLoadable.so
 vendor/lib64/libconfigdb.so
 vendor/lib64/liblqe.so
 vendor/lib64/libmdmdetect.so
-vendor/lib64/libminkdescriptor.so
 vendor/lib64/libpdmapper.so
 vendor/lib64/libpdnotifier.so
 vendor/lib64/libqcci_legacy.so
@@ -2504,6 +2523,12 @@ vendor/lib64/vendor.qti.ims.rcssipaidlservice-V1-ndk.so
 vendor/lib64/vendor.qti.ims.rcsuceaidlservice-V1-ndk.so
 vendor/lib64/vendor.qti.imsrtpservice@3.0.so
 vendor/lib64/vendor.qti.imsrtpservice@3.1.so
+
+# SMC Invoke
+vendor/etc/ssg/ta_config.json
+vendor/lib64/libminkdescriptor.so
+vendor/lib64/libminksocket_vendor.so
+vendor/lib64/libnative-api.so
 
 # Secure element
 vendor/bin/hw/android.hardware.secure_element-service.qti
@@ -2647,6 +2672,7 @@ vendor/etc/init/hw/init.mi_thermald.rc
 vendor/lib64/libthermalclient.so
 
 # Thermal configs
+odm/etc/setting.xml
 odm/etc/thermal-4k.conf
 odm/etc/thermal-arvr.conf
 odm/etc/thermal-boost.conf
@@ -2707,6 +2733,7 @@ vendor/lib64/libtime_genoff.so
 
 # Touchfeature
 odm/bin/hw/vendor.xiaomi.hw.touchfeature-service
+odm/bin/toucheventcheck
 odm/etc/init.panel_info.sh
 odm/etc/init/vendor.xiaomi.hw.touchfeature-service.rc
 odm/etc/vintf/manifest/vendor.xiaomi.hw.touchfeature-service.xml
@@ -2734,7 +2761,6 @@ vendor/lib64/libTrustedInputUtils.so
 vendor/lib64/libTrustedUIAIDL.so
 vendor/lib64/libTxPwrJni.so
 vendor/lib64/libloadtrusteduiapp.so
-vendor/lib64/libminksocket_vendor.so
 vendor/lib64/libsi.so
 vendor/lib64/libsilkyscrolls.so
 vendor/lib64/libtaautoload.so
