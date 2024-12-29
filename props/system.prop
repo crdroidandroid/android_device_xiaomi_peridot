@@ -6,6 +6,7 @@ ro.miui.notch=1
 ro.product.mod_device=peridot_global
 
 # Media
+media.settings.xml=/vendor/etc/media_profiles_cliffs_v0.xml
 media.stagefright.thumbnail.prefer_hw_codecs=true
 
 # IMS
