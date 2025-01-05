@@ -68,7 +68,7 @@
             </intent-filter>
         </receiver>
 
-        <!--   <activity
+        <activity
             android:name=".thermal.ThermalSettingsActivity"
             android:label="@string/thermal_title"
             android:theme="@style/Theme.SubSettingsBase_v31.Thermal"
@@ -87,7 +87,7 @@
         <service
             android:name=".thermal.ThermalService"
             android:permission="ThermalService">
-        </service>-->
+        </service>
 
         <!-- Thermal Profiles tile service -->
         

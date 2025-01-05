@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 The LineageOS Project
+ * Copyright (C) 2024 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,43 +16,69 @@
 
 package org.lineageos.settings.thermal;
 
-import android.service.quicksettings.TileService;
+import android.content.SharedPreferences;
 import android.service.quicksettings.Tile;
+import android.service.quicksettings.TileService;
 import android.util.Log;
 
-import org.lineageos.settings.utils.FileUtils;
+import androidx.preference.PreferenceManager;
+
 import org.lineageos.settings.R;
+import org.lineageos.settings.utils.FileUtils;
 
 public class ThermalTileService extends TileService {
-
     private static final String TAG = "ThermalTileService";
     private static final String THERMAL_SCONFIG = "/sys/class/thermal/thermal_message/sconfig";
+    private static final String THERMAL_ENABLED_KEY = "thermal_enabled";
 
     private String[] modes;
     private int currentMode = 0; // Default mode index
+    private SharedPreferences mSharedPrefs;
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        mSharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+
+        // Ensure a default value for the master switch
+        if (!mSharedPrefs.contains(THERMAL_ENABLED_KEY)) {
+            mSharedPrefs.edit().putBoolean(THERMAL_ENABLED_KEY, false).apply();
+        }
+    }
 
     @Override
     public void onStartListening() {
         super.onStartListening();
         modes = new String[]{
-            getString(R.string.thermal_mode_default),
-            getString(R.string.thermal_mode_performance),
-            getString(R.string.thermal_mode_gaming),
-            getString(R.string.thermal_mode_battery_saver),
-            getString(R.string.thermal_mode_unknown)
+                getString(R.string.thermal_mode_default),
+                getString(R.string.thermal_mode_performance),
+                getString(R.string.thermal_mode_gaming),
+                getString(R.string.thermal_mode_battery_saver),
+                getString(R.string.thermal_mode_unknown)
         };
-        currentMode = getCurrentThermalMode();
 
-        // Reset to Default if mode is Unknown
-        if (currentMode == 4) {
-            currentMode = 0;
-            setThermalMode(currentMode);
+        // Check the state of the master switch
+        boolean isMasterEnabled = mSharedPrefs.getBoolean(THERMAL_ENABLED_KEY, false);
+        if (isMasterEnabled) {
+            updateTileDisabled();
+        } else {
+            currentMode = getCurrentThermalMode();
+            // Reset to Default if mode is Unknown
+            if (currentMode == 4) {
+                currentMode = 0;
+                setThermalMode(currentMode);
+            }
+            updateTile();
         }
-        updateTile();
     }
 
     @Override
     public void onClick() {
+        boolean isMasterEnabled = mSharedPrefs.getBoolean(THERMAL_ENABLED_KEY, false);
+        if (isMasterEnabled) {
+            // Tile is disabled; ignore click events
+            return;
+        }
         toggleThermalMode();
     }
 
@@ -109,17 +135,20 @@ public class ThermalTileService extends TileService {
             } else {
                 tile.setState(Tile.STATE_INACTIVE);
             }
-
             // Update label and subtitle based on current mode
             tile.setLabel(getString(R.string.thermal_tile_label));
             tile.setSubtitle(modes[currentMode]);
             tile.updateTile();
-        } else {
-            Log.e(TAG, "QS Tile is unavailable, attempting recovery...");
-            // Fallback: Reset tile state in case of inconsistency
-            onStartListening();
+        }
+    }
+
+    private void updateTileDisabled() {
+        Tile tile = getQsTile();
+        if (tile != null) {
+            tile.setState(Tile.STATE_UNAVAILABLE); // Tile is greyed out
+            tile.setLabel(getString(R.string.thermal_tile_label));
+            tile.setSubtitle(getString(R.string.thermal_tile_disabled_subtitle));
+            tile.updateTile();
         }
     }
 }
-
-
