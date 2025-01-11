@@ -61,3 +61,4 @@ hal_server_domain(vendor_mfp-daemon, hal_fingerprint)
 hal_client_domain(vendor_mfp-daemon, vendor_hal_perf)
 hal_client_domain(vendor_mfp-daemon, hal_touchfeature_xiaomi)
 add_service(vendor_mfp-daemon, vendor_hal_fingerprint_service_xiaomi)
+allow vendor_mfp-daemon default_android_service:service_manager { add find };

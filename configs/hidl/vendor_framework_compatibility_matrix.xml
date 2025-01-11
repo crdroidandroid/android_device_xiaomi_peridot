@@ -798,7 +798,7 @@ SPDX-License-Identifier: BSD-3-Clause-Clear.
     </hal>
     <hal format="aidl" optional="true">
         <name>vendor.qti.gnss</name>
-        <version>1-5</version>
+        <version>1-7</version>
         <interface>
             <name>ILocAidlGnss</name>
             <instance>default</instance>

@@ -80,18 +80,6 @@ function blob_fixup() {
             [ "$2" = "" ] && return 0
             sed -i 's/ro.product.marketname/ro.product.odm.marketname/g' "${2}"
             ;;
-        vendor/bin/hw/vendor.dolby.hardware.dms@2.0-service | vendor/bin/hw/vendor.dolby.media.c2@1.0-service)
-        [ "$2" = "" ] && return 0
-            "${PATCHELF_0_17_2}" --add-needed "libstagefright_foundation-v33.so" "${2}"
-            ;;
-        vendor/lib64/hw/audio.primary.pineapple.so)
-        [ "$2" = "" ] && return 0
-            "${PATCHELF_0_17_2}" --add-needed "libstagefright_foundation-v33.so" "${2}"
-            ;;    
-        vendor/lib64/soundfx/libdlbvol.so | vendor/lib64/soundfx/libhwdap.so | vendor/lib64/soundfx/libswspatializer.so | vendor/lib64/libswspatializer_ext.so | vendor/lib64/libcodec2_soft_ac4dec.so |vendor/lib64/libcodec2_soft_ddpdec.so)
-            [ "$2" = "" ] && return 0
-            grep -q "libstagefright_foundation-v33.so" "${2}" || "${PATCHELF_0_17_2}" --replace-needed "libstagefright_foundation.so" "libstagefright_foundation-v33.so" "${2}"
-            ;;      
         vendor/lib64/libqcodec2_core.so)
 	    [ "$2" = "" ] && return 0
             "${PATCHELF}" --add-needed "libcodec2_shim.so" "${2}"

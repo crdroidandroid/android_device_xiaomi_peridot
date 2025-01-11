@@ -56,10 +56,12 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.audio.effect@7.0-impl \
     android.hardware.audio@7.1-impl \
+    android.hardware.audio.sounddose-vendor-impl \
     android.hardware.soundtrigger@2.3-impl
 
 PRODUCT_PACKAGES += \
     audioadsprpcd \
+    audio.primary.default \
     audio.primary.pineapple \
     audio.bluetooth.default \
     audio.r_submix.default \
@@ -71,7 +73,9 @@ PRODUCT_PACKAGES += \
     libagm_pcm_plugin \
     libagmclient \
     libaudiochargerlistener \
+    libaudioroute.vendor \
     libbatterylistener \
+    libpalclient \
     libfmpal \
     libhfp_pal \
     libqcompostprocbundle \
@@ -573,10 +577,6 @@ PRODUCT_COPY_FILES += \
 # Verified boot
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.verified_boot.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.verified_boot.xml
-
-# VNDK
-PRODUCT_COPY_FILES += \
-    prebuilts/vndk/v33/arm64/arch-arm64-armv8-a/shared/vndk-core/libstagefright_foundation.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libstagefright_foundation-v33.so
 
 # Weaver
 PRODUCT_PACKAGES += \
