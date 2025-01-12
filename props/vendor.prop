@@ -76,9 +76,6 @@ vendor.wv.oemcrypto.debug.enable_hlos_data_path=true
 persist.vendor.fingerprint.type=udfps_optical
 persist.vendor.fingerprint.sensor_location=610|2437|105
 
-# FRP
-ro.frp.pst=/dev/block/bootdevice/by-name/frp
-
 # FUSE
 persist.sys.fuse.passthrough.enable=true
 
