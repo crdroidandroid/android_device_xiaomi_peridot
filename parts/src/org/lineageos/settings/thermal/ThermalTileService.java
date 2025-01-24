@@ -24,6 +24,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.PowerManager;
+import android.os.SystemProperties;
 import android.service.quicksettings.Tile;
 import android.service.quicksettings.TileService;
 import android.util.Log;
@@ -38,6 +39,7 @@ public class ThermalTileService extends TileService {
     private static final String TAG = "ThermalTileService";
     private static final String THERMAL_SCONFIG = "/sys/class/thermal/thermal_message/sconfig";
     private static final String THERMAL_ENABLED_KEY = "thermal_enabled";
+    private static final String SYS_PROP = "sys.perf_mode_active";
 
     private String[] modes;
     private int currentMode = 0; // Default mode index
@@ -132,12 +134,15 @@ public class ThermalTileService extends TileService {
         if (mode == 2) { // If Battery Saver mode is selected
             enableBatterySaver(true);
             cancelPerformanceNotification();
+            setPerformanceModeActive(false);
         } else {
             enableBatterySaver(false);
             if (mode == 1) { // Performance mode
                 showPerformanceNotification();
+                setPerformanceModeActive(true);
             } else {
                 cancelPerformanceNotification();
+                setPerformanceModeActive(false);
             }
         }
     }
@@ -202,6 +207,11 @@ public class ThermalTileService extends TileService {
 
     private void cancelPerformanceNotification() {
         mNotificationManager.cancel(1);
+    }
+
+    private void setPerformanceModeActive(boolean active) {
+        SystemProperties.set(SYS_PROP, active ? "1" : "0");
+        Log.d(TAG, "Performance mode active set to: " + active);
     }
 }
 

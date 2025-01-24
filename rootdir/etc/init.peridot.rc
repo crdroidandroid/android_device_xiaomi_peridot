@@ -43,3 +43,9 @@ on property:vendor.post_boot.parsed=1
 
     # Disable multiple kswapd threads
     write /proc/sys/vm/kswapd_threads 1
+
+on property:sys.perf_mode_active=1
+    write /sys/devices/system/cpu/qcom_lpm/parameters/sleep_disabled 1
+    
+on property:sys.perf_mode_active=0
+    write /sys/devices/system/cpu/qcom_lpm/parameters/sleep_disabled 0

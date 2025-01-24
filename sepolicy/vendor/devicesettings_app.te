@@ -9,3 +9,8 @@ allow devicesettings_app vendor_hal_displayfeature_xiaomi_service:service_manage
 allow devicesettings_app vendor_hal_displayfeature_xiaomi_service:binder { call transfer };
 allow devicesettings_app vendor_hal_displayfeature_xiaomi_default:service_manager { find };
 allow devicesettings_app vendor_hal_displayfeature_xiaomi_default:binder { call transfer };
+
+allow devicesettings_app property_socket:sock_file { read write execute getattr };
+allow devicesettings_app init:unix_stream_socket connectto;
+allow devicesettings_app exported3_system_prop:property_service set;
+
