@@ -23,8 +23,11 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.ContentObserver;
+import android.os.Handler;
 import android.os.PowerManager;
 import android.os.SystemProperties;
+import android.provider.Settings;
 import android.service.quicksettings.Tile;
 import android.service.quicksettings.TileService;
 import android.util.Log;
@@ -46,6 +49,7 @@ public class ThermalTileService extends TileService {
     private SharedPreferences mSharedPrefs;
     private NotificationManager mNotificationManager;
     private Notification mNotification;
+    private ContentObserver batterySaverObserver;
 
     @Override
     public void onCreate() {
@@ -57,7 +61,9 @@ public class ThermalTileService extends TileService {
         if (!mSharedPrefs.contains(THERMAL_ENABLED_KEY)) {
             mSharedPrefs.edit().putBoolean(THERMAL_ENABLED_KEY, false).apply();
         }
+
         setupNotificationChannel();
+        registerBatterySaverObserver();
     }
 
     @Override
@@ -212,6 +218,38 @@ public class ThermalTileService extends TileService {
     private void setPerformanceModeActive(boolean active) {
         SystemProperties.set(SYS_PROP, active ? "1" : "0");
         Log.d(TAG, "Performance mode active set to: " + active);
+    }
+
+    private void registerBatterySaverObserver() {
+        batterySaverObserver = new ContentObserver(new Handler()) {
+            @Override
+            public void onChange(boolean selfChange) {
+                boolean isBatterySaverOn = Settings.Global.getInt(
+                        getContentResolver(),
+                        Settings.Global.LOW_POWER_MODE, 0) == 1;
+
+                if (isBatterySaverOn && (currentMode == 0 || currentMode == 1)) { // Default or Performance mode
+                    Log.d(TAG, "Battery saver enabled, switching to battery saver thermal mode.");
+                    currentMode = 2; // Switch to Battery Saver mode
+                    setThermalMode(currentMode);
+                    updateTile();
+                }
+            }
+        };
+
+        getContentResolver().registerContentObserver(
+                Settings.Global.getUriFor(Settings.Global.LOW_POWER_MODE),
+                false,
+                batterySaverObserver
+        );
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (batterySaverObserver != null) {
+            getContentResolver().unregisterContentObserver(batterySaverObserver);
+        }
     }
 }
 
