@@ -230,9 +230,13 @@ on boot
     chown root system /sys/kernel/qts/secondary/trusted_touch_device_path
 
     chown system system /sys/class/backlight/panel0-backlight/brightness
+    chmod 0666 /sys/class/backlight/panel0-backlight/brightness
     chown system system /sys/class/backlight/panel0-backlight/max_brightness
+    chmod 0666 /sys/class/backlight/panel0-backlight/max_brightness
     chown system system /sys/class/backlight/panel1-backlight/brightness
+    chmod 0666 /sys/class/backlight/panel1-backlight/brightness
     chown system system /sys/class/backlight/panel1-backlight/max_brightness
+    chmod 0666 /sys/class/backlight/panel1-backlight/max_brightness
 
     # Allow access to sensors device attributes
     chown system system /sys/class/sensors/MPU6050-accel/enable
