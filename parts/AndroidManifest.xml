@@ -100,6 +100,9 @@
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
+            <meta-data
+                android:name="android.service.quicksettings.TOGGLEABLE_TILE"
+                android:value="true" />
         </service>
 
         <activity
@@ -148,6 +151,9 @@
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE"/>
             </intent-filter>
+            <meta-data
+            android:name="android.service.quicksettings.TOGGLEABLE_TILE"
+            android:value="true" />
         </service>
 
         <!-- Display Saturation activity -->
@@ -219,10 +225,14 @@
             android:name=".touchsampling.TouchSamplingTileService"
             android:label="@string/touch_sampling_tile_label"
             android:icon="@drawable/ic_touch_sampling_tile"
+            android:exported="true"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
+            <meta-data
+                android:name="android.service.quicksettings.TOGGLEABLE_TILE"
+                android:value="true" />
         </service>
 
 	<!-- TileHandler activity -->
