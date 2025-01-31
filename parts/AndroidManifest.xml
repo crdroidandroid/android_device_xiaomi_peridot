@@ -272,5 +272,20 @@
                 android:value="true" />
         </service>
 
+        <!--HBM tile service -->
+        <service
+            android:name=".autohbm.HbmTileService"
+            android:label="@string/tile_hbm"
+            android:icon="@drawable/ic_hbm_tile"
+            android:exported="true"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.service.quicksettings.TOGGLEABLE_TILE"
+                android:value="true" />
+        </service>
+
     </application>
 </manifest>
