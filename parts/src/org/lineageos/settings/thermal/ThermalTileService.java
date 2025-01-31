@@ -24,6 +24,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.ContentObserver;
+import android.graphics.drawable.Icon;
 import android.os.Handler;
 import android.os.PowerManager;
 import android.os.SystemProperties;
@@ -31,7 +32,6 @@ import android.provider.Settings;
 import android.service.quicksettings.Tile;
 import android.service.quicksettings.TileService;
 import android.util.Log;
-import android.view.View;
 
 import androidx.preference.PreferenceManager;
 
@@ -43,9 +43,16 @@ public class ThermalTileService extends TileService {
     private static final String THERMAL_SCONFIG = "/sys/class/thermal/thermal_message/sconfig";
     private static final String THERMAL_ENABLED_KEY = "thermal_enabled";
     private static final String SYS_PROP = "sys.perf_mode_active";
+    private static final int NOTIFICATION_ID_PERFORMANCE = 1001;
+
+    // Constants for thermal modes
+    private static final int MODE_DEFAULT = 0;
+    private static final int MODE_PERFORMANCE = 1;
+    private static final int MODE_BATTERY_SAVER = 2;
+    private static final int MODE_UNKNOWN = 3;
 
     private String[] modes;
-    private int currentMode = 0; // Default mode index
+    private int currentMode = MODE_DEFAULT; // Default mode index
     private SharedPreferences mSharedPrefs;
     private NotificationManager mNotificationManager;
     private Notification mNotification;
@@ -81,8 +88,8 @@ public class ThermalTileService extends TileService {
             updateTileDisabled();
         } else {
             currentMode = getCurrentThermalMode();
-            if (currentMode == 3) {
-                currentMode = 0;
+            if (currentMode == MODE_UNKNOWN) {
+                currentMode = MODE_DEFAULT;
                 setThermalMode(currentMode);
             }
             updateTile();
@@ -99,10 +106,10 @@ public class ThermalTileService extends TileService {
     }
 
     private void toggleThermalMode() {
-        if (currentMode == 3) {
-            currentMode = 0;
+        if (currentMode == MODE_UNKNOWN) {
+            currentMode = MODE_DEFAULT;
         } else {
-            currentMode = (currentMode + 1) % 3;
+            currentMode = (currentMode + 1) % 3; // Cycle through 0, 1, 2
         }
         setThermalMode(currentMode);
         updateTile();
@@ -110,45 +117,57 @@ public class ThermalTileService extends TileService {
 
     private int getCurrentThermalMode() {
         String line = FileUtils.readOneLine(THERMAL_SCONFIG);
-        if (line != null) {
-            try {
-                int value = Integer.parseInt(line.trim());
-                switch (value) {
-                    case 0: return 0; // Default
-                    case 6: return 1; // Performance
-                    case 1: return 2; // Battery Saver
-                    default: return 3; // Unknown mode
-                }
-            } catch (NumberFormatException e) {
-                Log.e(TAG, "Error parsing thermal mode value: ", e);
-            }
+        if (line == null) {
+            Log.e(TAG, "Failed to read thermal mode from " + THERMAL_SCONFIG);
+            return MODE_UNKNOWN;
         }
-        return 3; // Treat invalid or missing values as Unknown
+        try {
+            int value = Integer.parseInt(line.trim());
+            switch (value) {
+                case 0: return MODE_DEFAULT;
+                case 6: return MODE_PERFORMANCE;
+                case 1: return MODE_BATTERY_SAVER;
+                default: return MODE_UNKNOWN;
+            }
+        } catch (NumberFormatException e) {
+            Log.e(TAG, "Error parsing thermal mode value: ", e);
+            return MODE_UNKNOWN;
+        }
     }
 
     private void setThermalMode(int mode) {
         int thermalValue;
         switch (mode) {
-            case 0: thermalValue = 0; break;  // Default
-            case 1: thermalValue = 6; break;  // Performance
-            case 2: thermalValue = 1; break;  // Battery Saver
-            default: thermalValue = 0; break; // Reset to Default for Unknown
+            case MODE_DEFAULT:
+                thermalValue = 0;
+                setPerformanceModeActive(1); // Default mode
+                break;
+            case MODE_PERFORMANCE:
+                thermalValue = 6;
+                setPerformanceModeActive(2); // Performance mode
+                break;
+            case MODE_BATTERY_SAVER:
+                thermalValue = 1;
+                setPerformanceModeActive(0); // Battery saver mode
+                break;
+            default:
+                thermalValue = 0;
+                setPerformanceModeActive(1); // Default mode
+                break;
         }
+
         boolean success = FileUtils.writeLine(THERMAL_SCONFIG, String.valueOf(thermalValue));
         Log.d(TAG, "Thermal mode changed to " + modes[mode] + ": " + success);
 
-        if (mode == 2) { // If Battery Saver mode is selected
+        if (mode == MODE_BATTERY_SAVER) {
             enableBatterySaver(true);
             cancelPerformanceNotification();
-            setPerformanceModeActive(false);
         } else {
             enableBatterySaver(false);
-            if (mode == 1) { // Performance mode
+            if (mode == MODE_PERFORMANCE) {
                 showPerformanceNotification();
-                setPerformanceModeActive(true);
             } else {
                 cancelPerformanceNotification();
-                setPerformanceModeActive(false);
             }
         }
     }
@@ -170,10 +189,15 @@ public class ThermalTileService extends TileService {
     private void updateTile() {
         Tile tile = getQsTile();
         if (tile != null) {
-            if (currentMode == 1) { // Performance
+            if (currentMode == MODE_PERFORMANCE) {
                 tile.setState(Tile.STATE_ACTIVE);
+                tile.setIcon(Icon.createWithResource(this, R.drawable.ic_thermal_performance));
+            } else if (currentMode == MODE_BATTERY_SAVER) {
+                tile.setState(Tile.STATE_INACTIVE);
+                tile.setIcon(Icon.createWithResource(this, R.drawable.ic_thermal_battery_saver));
             } else {
                 tile.setState(Tile.STATE_INACTIVE);
+                tile.setIcon(Icon.createWithResource(this, R.drawable.ic_thermal_default));
             }
             tile.setLabel(getString(R.string.thermal_tile_label));
             tile.setSubtitle(modes[currentMode]);
@@ -185,6 +209,7 @@ public class ThermalTileService extends TileService {
         Tile tile = getQsTile();
         if (tile != null) {
             tile.setState(Tile.STATE_UNAVAILABLE);
+            tile.setIcon(Icon.createWithResource(this, R.drawable.ic_thermal_default)); // Default icon when disabled
             tile.setLabel(getString(R.string.thermal_tile_label));
             tile.setSubtitle(getString(R.string.thermal_tile_disabled_subtitle));
             tile.updateTile();
@@ -192,7 +217,11 @@ public class ThermalTileService extends TileService {
     }
 
     private void setupNotificationChannel() {
-        NotificationChannel channel = new NotificationChannel(TAG, getString(R.string.perf_mode_title), NotificationManager.IMPORTANCE_DEFAULT);
+        NotificationChannel channel = new NotificationChannel(
+                TAG,
+                getString(R.string.perf_mode_title),
+                NotificationManager.IMPORTANCE_DEFAULT
+        );
         channel.setBlockable(true);
         mNotificationManager.createNotificationChannel(channel);
     }
@@ -203,21 +232,21 @@ public class ThermalTileService extends TileService {
         mNotification = new Notification.Builder(this, TAG)
                 .setContentTitle(getString(R.string.perf_mode_title))
                 .setContentText(getString(R.string.perf_mode_notification))
-                .setSmallIcon(R.drawable.ic_thermal_tile)
+                .setSmallIcon(R.drawable.ic_thermal_performance)
                 .setContentIntent(pendingIntent)
                 .setOngoing(true)
                 .setFlag(Notification.FLAG_NO_CLEAR, true)
                 .build();
-        mNotificationManager.notify(1, mNotification);
+        mNotificationManager.notify(NOTIFICATION_ID_PERFORMANCE, mNotification);
     }
 
     private void cancelPerformanceNotification() {
-        mNotificationManager.cancel(1);
+        mNotificationManager.cancel(NOTIFICATION_ID_PERFORMANCE);
     }
 
-    private void setPerformanceModeActive(boolean active) {
-        SystemProperties.set(SYS_PROP, active ? "1" : "0");
-        Log.d(TAG, "Performance mode active set to: " + active);
+    private void setPerformanceModeActive(int mode) {
+        SystemProperties.set(SYS_PROP, String.valueOf(mode));
+        Log.d(TAG, "Performance mode active set to: " + mode);
     }
 
     private void registerBatterySaverObserver() {
@@ -228,9 +257,9 @@ public class ThermalTileService extends TileService {
                         getContentResolver(),
                         Settings.Global.LOW_POWER_MODE, 0) == 1;
 
-                if (isBatterySaverOn && (currentMode == 0 || currentMode == 1)) { // Default or Performance mode
+                if (isBatterySaverOn && (currentMode == MODE_DEFAULT || currentMode == MODE_PERFORMANCE)) {
                     Log.d(TAG, "Battery saver enabled, switching to battery saver thermal mode.");
-                    currentMode = 2; // Switch to Battery Saver mode
+                    currentMode = MODE_BATTERY_SAVER;
                     setThermalMode(currentMode);
                     updateTile();
                 }
@@ -252,4 +281,3 @@ public class ThermalTileService extends TileService {
         }
     }
 }
-
