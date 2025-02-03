@@ -625,6 +625,7 @@ PRODUCT_PACKAGES += \
     libdisplayconfig.system.qti \
     libgui_shim \
     libinput_shim \
+    libbinder_shim \
     libwfdaac_vendor \
     vendor.display.config@2.0 \
     vendor.qti.hardware.display.config-V5-ndk
