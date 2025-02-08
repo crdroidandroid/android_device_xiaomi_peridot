@@ -1663,11 +1663,9 @@ vendor/lib64/vendor.dolby.hardware.dms@2.0.so
 # Fingerprint
 odm/app/JVFactoryTest/JVFactoryTest.apk
 odm/app/goodix_sz/goodix_sz.apk
-odm/lib64/hw/fingerprint.goodix_fod.so
+odm/lib64/hw/fingerprint.goodix_fod.so:odm/lib64/hw/fingerprint.goodix_fod.default.so
 odm/lib64/hw/fingerprint.jiiov.so
 odm/lib64/libgf_hal.so
-odm/bin/hw/mfp-daemon
-odm/etc/init/init.mfp-daemon.aidl.rc
 odm/etc/vintf/manifest/AHBF-V3-service.xml
 odm/etc/vintf/manifest/fod-aidl.xml
 vendor/etc/permissions/qti_fingerprint_interface.xml

@@ -1,0 +1,74 @@
+type hal_fingerprint_service_xiaomi, vndservice_manager_type;
+typeattribute hal_fingerprint_default data_between_core_and_vendor_violators;
+
+allow hal_fingerprint_default {
+    sysfs_touch_hostprocess
+    vendor_sysfs_fingerprint
+    vendor_sysfs_graphics
+    vendor_sysfs_displayfeature
+}: file { read write open };
+
+allow hal_fingerprint_default {
+    vendor_sysfs_spss
+    vendor_sysfs_graphics
+    mnt_vendor_file
+}: dir search;
+
+allow hal_fingerprint_default {
+    input_device
+    vendor_sysfs_graphics
+}: dir r_dir_perms;
+
+allow hal_fingerprint_default {
+    vendor_fingerprint_device
+    tee_device
+    uhid_device
+    touchfeature_device
+    vendor_displayfeature_device
+}: chr_file { read write open ioctl };
+
+allow hal_fingerprint_default {
+    vendor_dmabuf_qseecom_heap_device
+    vendor_dmabuf_qseecom_ta_heap_device
+}: chr_file r_file_perms;
+
+allow hal_fingerprint_default sysfs_tp_fodstatus:file r_file_perms;
+allow hal_fingerprint_default sysfs_tp_fodstatus:file write;
+allow hal_fingerprint_default sysfs:file write;
+r_dir_file(hal_fingerprint_default, firmware_file);
+
+allow hal_fingerprint_default init:unix_stream_socket connectto;
+allow hal_fingerprint_default property_socket:sock_file write;
+allow hal_fingerprint_default self:netlink_socket { create read };
+
+add_service(hal_fingerprint_default, hal_fingerprint_service_xiaomi);
+add_service(hal_fingerprint_default, vendor_hal_fingerprint_service_xiaomi);
+
+# Binder IPC
+allow hal_fingerprint_default {
+    platform_app
+    system_app
+    surfaceflinger
+    vendor_hal_perf_default
+}: binder { call transfer };
+
+allow hal_fingerprint_default {
+    platform_app
+    system_app
+}: fd use;
+
+get_prop(hal_fingerprint_default, {
+    vendor_fp_prop
+    vendor_panel_info_prop
+});
+
+set_prop(hal_fingerprint_default, {
+    vendor_fp_prop
+    vendor_fp_info_prop
+});
+
+allow hal_fingerprint_default vendor_hal_perf_hwservice:hwservice_manager find;
+allow hal_fingerprint_default input_device:chr_file rwx_file_perms;
+allow hal_fingerprint_default vendor_sysfs_displayfeature:dir search;
+allow hal_fingerprint_default vendor_sysfs_displayfeature:file getattr;
+allow hal_fingerprint_default self:netlink_socket { create bind write };

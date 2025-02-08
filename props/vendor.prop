@@ -214,6 +214,9 @@ ro.vendor.radio.build_region=global
 # SKU
 ro.boot.product.vendor.sku=cliffs
 
+# Sensors
+ro.vendor.sensors.xiaomi.udfps=true
+
 # USB
 ro.recovery.usb.adb.pid=D001
 ro.recovery.usb.fastboot.pid=4EE0

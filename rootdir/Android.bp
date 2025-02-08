@@ -35,6 +35,13 @@ sh_binary {
 }
 
 prebuilt_etc {
+    name: "init.fingerprint.rc",
+    src: "etc/init.fingerprint.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
     name: "charger_fw_fstab.qti",
     src: "etc/charger_fw_fstab.qti",
     vendor: true,
