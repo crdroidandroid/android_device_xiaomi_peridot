@@ -510,6 +510,7 @@ PRODUCT_PACKAGES += \
     qti-telephony-utils-prd \
     qti_telephony_utils.xml \
     qti_telephony_utils_prd.xml \
+    QtiTelephonyCompat \
     telephony-ext
 
 PRODUCT_PACKAGES += \
