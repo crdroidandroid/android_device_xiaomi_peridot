@@ -233,8 +233,9 @@ echo 0 > /proc/sys/kernel/sched_util_clamp_min_rt_default
 
 # Cpuset parameters
 echo 0-1 > /dev/cpuset/background/cpus
-echo 0-2 > /dev/cpuset/system-background/cpus
+echo 0-3 > /dev/cpuset/system-background/cpus
 echo 0-7 > /dev/cpuset/top-app/cpus
+echo 1-2 > /dev/cpuset/audio-app/cpus
 
 # Set restricted cpuset to the same CPUs as system-background
 cat /dev/cpuset/system-background/cpus > /dev/cpuset/restricted/cpus
