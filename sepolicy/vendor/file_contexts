@@ -119,3 +119,6 @@
 
 # Touch Sampling
 /sys/devices/platform/goodix_ts.0/switch_report_rate                                               u:object_r:sysfs_htsr:s0
+
+# Process and system statistics files
+/proc/stat u:object_r:proc_stat:s0
