@@ -401,6 +401,14 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     vendor.qti.hardware.memtrack-service
 
+# Mountpoints
+PRODUCT_PACKAGES += \
+    vendor_bt_firmware_mountpoint \
+    vendor_dsp_mountpoint \
+    vendor_firmware_mnt_mountpoint \
+    vendor_modem_firmware_mountpoint \
+    vendor_vm-system_mountpoint
+
 # Network
 PRODUCT_PACKAGES += \
     android.system.net.netd-V1-ndk.vendor \

@@ -44,3 +44,8 @@ install_symlink {
     symlink_target: "/vendor/modem_firmware",
 }
 
+mkdir {
+    name: "vendor_modem_firmware_mountpoint",
+    dir: "modem_firmware",
+    vendor: true,
+}
