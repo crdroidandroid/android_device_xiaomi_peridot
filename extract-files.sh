@@ -63,10 +63,6 @@ function blob_fixup() {
             [ "$2" = "" ] && return 0
             sed -i 's/xml=version/xml version/g' "${2}"
             ;;
-        system_ext/etc/vintf/manifest/vendor.qti.qesdsys.service.xml)
-            [ "$2" = "" ] && return 0
-            sed -i '1,6d' "${2}"
-            ;;
         system_ext/lib64/libwfdmmsrc_system.so)
             [ "$2" = "" ] && return 0
             grep -q "libgui_shim.so" "${2}" || "${PATCHELF}" --add-needed "libgui_shim.so" "${2}"
@@ -92,10 +88,6 @@ function blob_fixup() {
         vendor/etc/media_codecs.xml|vendor/etc/media_codecs_cliffs_v0.xml|vendor/etc/media_codecs_performance_cliffs_v0.xml)
             [ "$2" = "" ] && return 0
             sed -i -E '/media_codecs_(google_audio|google_c2|google_telephony|vendor_audio)/d' "${2}"
-            ;;
-        vendor/etc/seccomp_policy/atfwd@2.0.policy|vendor/etc/seccomp_policy/wfdhdcphalservice.policy|vendor/etc/seccomp_policy/gnss@2.0-qsap-location.policy|vendor/etc/seccomp_policy/qsap_sensors.policy|vendor/etc/seccomp_policy/qesdksec.policy)
-            [ "$2" = "" ] && return 0
-            grep -q "gettid: 1" "${2}" || echo -e "\ngettid: 1" >> "${2}"
             ;;
         vendor/etc/seccomp_policy/c2audio.vendor.ext-arm64.policy)
             [ "$2" = "" ] && return 0

@@ -17,6 +17,13 @@
             <instance>default</instance>
         </interface>
     </hal>
+    <hal format="aidl" optional="true">
+         <name>vendor.dolby.dms</name>
+         <interface>
+             <name>IDms</name>
+             <instance>default</instance>
+         </interface>
+     </hal>
     <hal format="hidl" optional="true">
         <name>vendor.dolby.hardware.dms</name>
         <version>2.0</version>
@@ -94,6 +101,13 @@
         <name>vendor.xiaomi.hw.touchfeature</name>
         <interface>
             <name>ITouchFeature</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.xiaomi.sensor.camera</name>
+        <interface>
+            <name>IMiCam</name>
             <instance>default</instance>
         </interface>
     </hal>

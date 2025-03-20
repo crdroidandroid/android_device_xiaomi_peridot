@@ -1000,6 +1000,7 @@ SPDX-License-Identifier: BSD-3-Clause-Clear.
    <hal format="hidl" optional="true">
        <name>android.hardware.media.c2</name>
        <version>1.0</version>
+       <version>1.1</version>
        <version>1.2</version>
        <interface>
            <name>IComponentStore</name>
@@ -1007,6 +1008,24 @@ SPDX-License-Identifier: BSD-3-Clause-Clear.
            <instance>software</instance>
        </interface>
    </hal>
+    <hal format="aidl" optional="true">
+         <name>android.hardware.media.c2</name>
+         <interface>
+             <name>IComponentStore</name>
+             <instance>default</instance>
+             <instance>software</instance>
+         </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+         <name>android.hardware.media.c2</name>
+         <version>1.0</version>
+         <interface>
+             <name>IComponentStore</name>
+             <instance>default</instance>
+             <instance>dolby</instance>
+             <instance>software</instance>
+         </interface>
+     </hal>
    <hal format="hidl" optional="true">
         <name>vendor.qti.hardware.display.allocator</name>
         <version>1.0</version>
