@@ -1,5 +1,20 @@
 <manifest version="7.0" type="device" target-level="8">
     <hal format="aidl">
+         <name>android.hardware.nfc</name>
+         <version>1</version>
+         <fqname>INfc/default</fqname>
+     </hal>
+     <hal format="aidl">
+         <name>vendor.nxp.nxpnfc_aidl</name>
+         <version>1</version>
+         <fqname>INxpNfc/default</fqname>
+     </hal>
+     <hal format="aidl">
+         <name>android.hardware.secure_element</name>
+         <version>1</version>
+         <fqname>ISecureElement/eSE1</fqname>
+     </hal>
+    <hal format="aidl">
         <name>android.hardware.contexthub</name>
         <version>2</version>
         <fqname>IContextHub/default</fqname>
