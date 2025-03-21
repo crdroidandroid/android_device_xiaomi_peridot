@@ -84,7 +84,7 @@ odm/lib/rfsa/adsp/libarcsoft_beauty_hvx_skel.so
 odm/lib/rfsa/adsp/libarc_htp_driver_skel.so
 odm/lib/rfsa/adsp/libmlawbpostproc_dsp_skel.so
 odm/lib/rfsa/adsp/libmialgo_basic_cdsp_skel.so
-odm/lib/rfsa/adsp/libSnpeHtpV75Skel.so
+odm/lib/rfsa/adsp/libSnpeHtpV75Skel.so;SYMLINK=vendor/lib/rfsa/adsp/libSnpeHtpV75Skel.so
 odm/lib/rfsa/adsp/libmialgo_bokeh_effect_cdsp_skel.so
 odm/lib/rfsa/adsp/libhme_dsp_skel.so
 odm/lib/rfsa/adsp/libmialgo_mc_bokeh_cdsp_skel.so
@@ -104,7 +104,8 @@ odm/lib/rfsa/adsp/libQnnHtpV75.so
 odm/lib/rfsa/adsp/libQnnHtpV73.so
 odm/lib/rfsa/adsp/libQnnHtpV73QemuDriver.so
 odm/lib/rfsa/adsp/capi_elus_rx.so
-odm/mount/camera/lib/rfsa/adsp/libSnpeHtpV73Skel.so
+odm/mount/camera/lib/rfsa/adsp/libSnpeHtpV73Skel.so:vendor/lib/rfsa/adsp/libSnpeHtpV73Skel.so
+odm/mount/camera/lib64/rfs/dsp/libbitml_nsp_73nb_skel.so:vendor/lib64/rfs/dsp/libbitml_nsp_73nb_skel.so
 vendor/lib/rfsa/adsp/libeye_tracking_dsp_sample_skel.so
 vendor/lib/rfsa/adsp/nearby.napp_header
 vendor/lib/rfsa/adsp/libqvr_cam_dsp_driver_skel.so
@@ -935,8 +936,8 @@ odm/lib64/bm4a73v08s12n59.bin
 odm/lib64/bm4a73v08s12n60.bin
 odm/lib64/bm4a73v08s12n61.bin
 odm/lib64/bm4a73v08s12n62.bin
-odm/lib64/camera/bitmlconfig.bin
-odm/lib64/camera/bitmlconfig_sm8635.bin
+odm/lib64/camera/bitmlconfig.bin;SYMLINK=vendor/lib64/camera/bitmlconfig.bin
+odm/lib64/camera/bitmlconfig_sm8635.bin;SYMLINK=vendor/lib64/camera/bitmlconfig_sm8635.bin
 odm/lib64/camera/camxfl115indices.bin
 odm/lib64/camera/camxfl300v1indices.bin
 odm/lib64/camera/camxfl300v2indices.bin
@@ -1448,10 +1449,10 @@ vendor/etc/seccomp_policy/vendor.qti.hardware.dsp.policy
 vendor/lib64/vendor.qti.hardware.dsp@1.0.so
 
 # DSP modules
-odm/lib64/rfs/dsp/libapn_dsp_skel.so
-odm/lib64/rfs/dsp/libbitml_nsp_75na_skel.so
-odm/lib64/rfs/dsp/libhdr_skel.so
-odm/lib64/rfs/dsp/libqsegnetengine_dsp_skel.so
+odm/lib64/rfs/dsp/libapn_dsp_skel.so;SYMLINK=vendor/lib64/rfs/dsp/libapn_dsp_skel.so
+odm/lib64/rfs/dsp/libbitml_nsp_75na_skel.so;SYMLINK=vendor/lib64/rfs/dsp/libbitml_nsp_75na_skel.so
+odm/lib64/rfs/dsp/libhdr_skel.so;SYMLINK=vendor/lib64/rfs/dsp/libhdr_skel.so
+odm/lib64/rfs/dsp/libqsegnetengine_dsp_skel.so;SYMLINK=vendor/lib64/rfs/dsp/libqsegnetengine_dsp_skel.so
 vendor/lib64/rfs/dsp/libdpp_engine_skel.so
 vendor/lib64/rfs/dsp/libmobilenet_dsp_frc_networks.so
 vendor/lib64/rfs/dsp/libworker_pool.so
@@ -2242,8 +2243,8 @@ system_ext/lib64/lib-imsvideocodec.so
 system_ext/lib64/lib-imsvt.so
 system_ext/lib64/lib-imsvtextutils.so
 system_ext/lib64/lib-imsvtutils.so
-system_ext/lib64/libimscamera_jni.so
-system_ext/lib64/libimsmedia_jni.so
+system_ext/lib64/libimscamera_jni.so;SYMLINK=system_ext/priv-app/ims/lib/arm64/libimscamera_jni.so
+system_ext/lib64/libimsmedia_jni.so;SYMLINK=system_ext/priv-app/ims/lib/arm64/libimsmedia_jni.so
 system_ext/lib64/vendor.qti.ImsRtpService-V1-ndk.so
 system_ext/lib64/vendor.qti.imsrtpservice@3.0.so
 system_ext/lib64/vendor.qti.imsrtpservice@3.1.so
