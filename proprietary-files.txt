@@ -2772,12 +2772,12 @@ odm/firmware/vpu33_4v.mbn
 odm/firmware/vpu33_4v_unsigned.mbn
 
 # Vibrator firmware
-odm/firmware/0_click_P_RTP.bin
-odm/firmware/1_doubelClick_P_RTP.bin
-odm/firmware/2_tick_P_RTP.bin
-odm/firmware/3_thud_P_RTP.bin
-odm/firmware/4_pop_P_RTP.bin
-odm/firmware/5_heavyClick_P_RTP.bin
+odm/firmware/0_click_P_RTP.bin:vendor/etc/vibrator/effect_0.bin
+odm/firmware/1_doubelClick_P_RTP.bin:vendor/etc/vibrator/effect_1.bin
+odm/firmware/2_tick_P_RTP.bin:vendor/etc/vibrator/effect_2.bin
+odm/firmware/3_thud_P_RTP.bin:vendor/etc/vibrator/effect_3.bin
+odm/firmware/4_pop_P_RTP.bin:vendor/etc/vibrator/effect_4.bin
+odm/firmware/5_heavyClick_P_RTP.bin:vendor/etc/vibrator/effect_5.bin
 odm/firmware/aw8697_haptic.bin
 odm/firmware/aw8697_rtp_1.bin
 odm/firmware/haptic_ram.bin
