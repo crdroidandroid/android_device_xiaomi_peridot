@@ -26,6 +26,7 @@ allow hal_camera_default vendor_sysfs_kgsl_proc:file { getattr open read };
 allow hal_camera_default vendor_sysfs_displayfeature:dir search;
 allow hal_camera_default vendor_sysfs_displayfeature:file { open read };
 allow hal_camera_default vendor_sysfs_kgsl:file { getattr open read };
+allow hal_camera_default vendor_sysfs_kgsl:lnk_file { getattr open read };
 allow hal_camera_default vendor_sysfs_battery_supply:dir search;
 allow hal_camera_default vendor_sysfs_battery_supply:file { getattr open read };
 allow hal_camera_default vendor_sysfs_battery_supply:file open;
