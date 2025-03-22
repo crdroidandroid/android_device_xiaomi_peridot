@@ -1241,6 +1241,9 @@ odm/lib64/camera/components/libcamxevainterface.so
 odm/lib64/camera/components/libdepthmapwrapper_itof.so
 odm/lib64/camera/components/libdepthmapwrapper_secure.so
 
+# Camera Extensions
+system_ext/framework/camerax-vendor-extensions.jar
+
 # Camera firmware
 odm/firmware/CAMERA_ICP.b00
 odm/firmware/CAMERA_ICP.b01

@@ -4,6 +4,7 @@ ro.com.google.lens.oem_camera_package=com.android.camera
 ro.hardware.camera=xiaomi
 ro.miui.notch=1
 ro.product.mod_device=peridot_global
+ro.camerax.extensions.enabled=true
 
 # Media
 media.settings.xml=/vendor/etc/media_profiles_cliffs_v0.xml
