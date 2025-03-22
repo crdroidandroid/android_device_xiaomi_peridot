@@ -63,6 +63,10 @@ function blob_fixup() {
             [ "$2" = "" ] && return 0
             sed -i 's/xml=version/xml version/g' "${2}"
             ;;
+        odm/lib64/libwrapper_dlengine.so)
+            [ "$2" = "" ] && return 0
+            "${PATCHELF_0_17_2}" --add-needed "libwrapper_dlengine_shim.so" "${2}"
+            ;;    
         system_ext/lib64/libwfdmmsrc_system.so)
             [ "$2" = "" ] && return 0
             grep -q "libgui_shim.so" "${2}" || "${PATCHELF}" --add-needed "libgui_shim.so" "${2}"
