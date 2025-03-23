@@ -941,7 +941,26 @@
          <item>"/system/framework/framework.jar"</item>
          <item>"/system/framework/services.jar"</item>
          <item>"/system/bin/surfaceflinger"</item>
-         <item>/vendor/framework/androidx.camera.extensions.impl.jar</item>
+         <item>"/system/framework/arm64/boot-framework.oat"</item>
+         <item>"/system/framework/oat/arm64/services.odex"</item>
+         <item>"/apex/com.android.art/javalib/core-oj.jar"</item>
+         <item>"/apex/com.android.art/javalib/core-libart.jar"</item>
+         <item>"/system_ext/priv-app/SystemUI/SystemUI.apk"</item>
+         <item>"/system_ext/priv-app/SystemUI/oat/arm64/SystemUI.odex"</item>
+         <item>"/system/lib64/libEGL.so"</item>
+         <item>"/system/lib64/libGLESv2.so"</item>
+         <item>"/system/lib64/libhwui.so"</item>
+         <item>"/vendor/lib64/libcamxexternalformatutils.so"</item>
+         <item>"/vendor/lib64/egl/libEGL_adreno.so"</item>
+         <item>"/vendor/lib64/egl/libGLESv2_adreno.so"</item>
+         <item>"/vendor/lib64/libCB.so"</item>
+         <item>"/vendor/lib64/libgsl.so"</item>
+         <item>"/vendor/lib64/libllvm-glnext.so"</item>
+         <item>"/vendor/lib64/libllvm-qcom.so"</item>
+         <item>"/vendor/lib64/libllvm-qgl.so"</item>
+         <item>"/vendor/framework/androidx.camera.extensions.impl.jar"</item>
+         <item>"/vendor/bin/hw/vendor.qti.hardware.display.allocator-service"</item>
+         <item>"/vendor/bin/hw/vendor.qti.hardware.display.composer-service"</item>
      </string-array>
 
     <!-- The default refresh rate for a given device. Change this value to set a higher default
