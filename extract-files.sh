@@ -63,6 +63,10 @@ function blob_fixup() {
             [ "$2" = "" ] && return 0
             sed -i 's/xml=version/xml version/g' "${2}"
             ;;
+        odm/lib64/hw/camera.qcom.so | odm/lib64/hw/com.qti.chi.override.so | odm/lib64/hw/camera.xiaomi.so | odm/lib64/libcamxcommonutils.so | odm/lib64/libmialgoengine.so | odm/lib64/libchifeature2.so)
+            [ "$2" = "" ] && return 0
+            grep -q libprocessgroup_shim.so "${2}" || "${PATCHELF}" --add-needed "libprocessgroup_shim.so" "${2}"
+            ;;
         odm/lib64/libwrapper_dlengine.so)
             [ "$2" = "" ] && return 0
             "${PATCHELF_0_17_2}" --add-needed "libwrapper_dlengine_shim.so" "${2}"
