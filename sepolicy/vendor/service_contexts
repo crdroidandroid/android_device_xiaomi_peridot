@@ -14,6 +14,7 @@ com.fingerprints.extension3.IFingerprintNavigation/default              u:object
 com.fingerprints.extension3.IFingerprintSensorTest/default              u:object_r:vendor_hal_fingerprint_service_xiaomi:s0
 vendor.xiaomi.hardware.fingerprintextension.IXiaomiFingerprint/default  u:object_r:vendor_hal_fingerprint_service_xiaomi:s0
 vendor.xiaomi.hardware.fx.tunnel.IMiFxTunnel/default                    u:object_r:vendor_hal_fingerprint_service_xiaomi:s0
+com.fingerprints.fpc.extension.IFpcExtension/default                    u:object_r:vendor_hal_fingerprint_service_xiaomi:s0
 
 # Mlipay
 vendor.xiaomi.hardware.mlipay.IMlipayService/default        u:object_r:hal_mlipay_service:s0

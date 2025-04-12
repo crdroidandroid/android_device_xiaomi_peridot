@@ -12,4 +12,7 @@ settingsdebug.instant.packages u:object_r:settingslib_prop:s0
 ro.max.fling_velocity          u:object_r:exported_system_prop:s0
 ro.min.fling_velocity          u:object_r:exported_system_prop:s0
 
-sys.perf_mode_active           u:object_r:exported3_system_prop:s0
+# XiaomiParts
+ro.input.resampling                          u:object_r:exported_system_prop:s0
+viewroot.profile_rendering                   u:object_r:exported_system_prop:s0
+sys.perf_mode_active                         u:object_r:exported_system_prop:s0

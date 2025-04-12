@@ -1,0 +1,73 @@
+app_domain(parts_app)
+
+binder_use(parts_app)
+
+hal_client_domain(parts_app, hal_touchfeature_xiaomi)
+
+binder_call(parts_app, hal_touchfeature_xiaomi)
+binder_call(parts_app, vendor_hal_displayfeature_xiaomi)
+
+allow parts_app {
+  activity_service
+  activity_task_service
+  app_api_service
+  audioserver_service
+  audio_service
+  autofill_service
+  batteryproperties_service
+  batterystats_service
+  cameraserver_service
+  content_capture_service
+  device_state_service
+  drmserver_service
+  game_service
+  gpu_service
+  hint_service
+  media_session_service
+  mediaextractor_service
+  mediametrics_service
+  mediaserver_service
+  netstats_service
+  permission_checker_service
+  sensorservice_service
+  statusbar_service
+  surfaceflinger_service
+  thermal_service
+  trust_service
+  voiceinteraction_service
+  vendor_perf_service
+  vibrator_manager_service
+}:service_manager find;
+
+allow parts_app {
+  hal_touchfeature_xiaomi_hwservice
+  vendor_hal_displayfeature_xiaomi_hwservice
+}:hwservice_manager find;
+
+allow parts_app system_app_data_file:dir create_dir_perms;
+allow parts_app system_app_data_file:{
+  file
+  lnk_file
+} create_file_perms;
+
+allow parts_app sysfs_thermal:dir r_dir_perms;
+allow parts_app sysfs_thermal:file rw_file_perms;
+allow parts_app sysfs_htsr:file rw_file_perms;
+allow parts_app vendor_hal_displayfeature_xiaomi_hwservice:hwservice_manager find;
+
+allow parts_app vendor_hal_displayfeature_xiaomi_service:binder { call transfer };
+allow parts_app vendor_hal_displayfeature_xiaomi_default:binder { call transfer };
+dontaudit parts_app vendor_hal_displayfeature_xiaomi_service:service_manager find;
+dontaudit parts_app vendor_hal_displayfeature_xiaomi_default:service_manager find;
+
+hal_client_domain(parts_app, hal_touchfeature_xiaomi)
+binder_call(parts_app, hal_touchfeature_xiaomi)
+binder_call(parts_app, default_android_hwservice)
+binder_call(parts_app, gpuservice)
+
+set_prop(parts_app, exported_system_prop)
+set_prop(parts_app, system_prop)
+
+allow parts_app property_socket:sock_file { write };
+allow parts_app proc_stat:file { read open getattr };
+allow parts_app init:unix_stream_socket connectto;
