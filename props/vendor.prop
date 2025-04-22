@@ -166,6 +166,7 @@ vendor.display.force_lm_to_fb_config=1
 vendor.display.scaling_dest_opt_mode=4
 vendor.display.scaling_source_opt_mode=4
 vendor.display.vds_allow_hwc=1
+debug.sdm.support_writeback=0
 vendor.gralloc.disable_ubwc=0
 vendor.gralloc.enable_logs=0
 
