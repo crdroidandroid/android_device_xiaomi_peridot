@@ -32,8 +32,8 @@ TARGET_SUPPORTS_QUICK_TAP := true
 TARGET_HAS_UDFPS := true
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    BuildDesc="peridot_global-user 14 UKQ1.240624.001 OS2.0.100.0.VNPMIXM release-keys" \
-    BuildFingerprint=POCO/peridot_global/peridot:14/UKQ1.240624.001/OS2.0.100.0.VNPMIXM:user/release-keys \
+    BuildDesc="peridot_global-user 14 UKQ1.240624.001 OS2.0.102.0.VNPMIXM release-keys" \
+    BuildFingerprint=POCO/peridot_global/peridot:14/UKQ1.240624.001/OS2.0.102.0.VNPMIXM:user/release-keys \
     DeviceName=peridot
     DeviceProduct=peridot_global \
     SystemName=peridot_global \
