@@ -5,9 +5,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/aosp_peridot.mk
+    $(LOCAL_DIR)/lineage_peridot.mk
 
 COMMON_LUNCH_CHOICES := \
-    aosp_peridot-eng \
-    aosp_peridot-userdebug \
-    aosp_peridot-user
+    lineage_peridot-eng \
+    lineage_peridot-userdebug \
+    lineage_peridot-user
