@@ -274,12 +274,8 @@ blob_fixups: blob_fixups_user_type = {
             'libaudioroute.so',
             'libaudioroute-v34.so'
     ),
-    'vendor/etc/clstc_config_library.xml': blob_fixup()
-        .regex_replace(r'<library>\s*<name>libdolbyclstc[\s\S]*?</library>', ''),
     'vendor/etc/seccomp_policy/c2audio.vendor.ext-arm64.policy': blob_fixup()
         .add_line_if_missing('setsockopt: 1'),
-    'vendor/etc/vintf/manifest/c2_manifest_vendor.xml': blob_fixup()
-        .regex_replace('.+DOLBY.+\n', ''),
     (
         'vendor/bin/qcc-vendor',
         'vendor/bin/qms',
