@@ -1,10 +1,10 @@
 [
   {
-    "repository": "android_hardware_xiaomi",
+    "repository": "android_hardware_xiaomi_peridot",
     "target_path": "hardware/xiaomi"
   },
   {
-    "repository": "android_kernel_xiaomi_sm8635",
+    "repository": "android_kernel_xiaomi_sm8635-peridot",
     "target_path": "kernel/xiaomi/sm8635"
   },
   {
@@ -14,5 +14,9 @@
   {
     "repository": "android_kernel_xiaomi_sm8635-modules",
     "target_path": "kernel/xiaomi/sm8635-modules"
-  }
+  },
+{
+  "repository": "proprietary_vendor_xiaomi_peridot",
+    "target_path": "vendor/xiaomi/peridot"
+}
 ]
