@@ -15,8 +15,12 @@
     "repository": "crdroidandroid/android_kernel_xiaomi_sm8635-modules",
     "target_path": "kernel/xiaomi/sm8635-modules"
   },
-{
-  "repository": "crdroidandroid/proprietary_vendor_xiaomi_peridot",
+  {
+    "repository": "crdroidandroid/proprietary_vendor_xiaomi_peridot",
     "target_path": "vendor/xiaomi/peridot"
-}
+  },
+  {
+    "repository": "crdroidandroid/android_vendor_bcr",
+    "target_path": "vendor/bcr"
+  }
 ]
