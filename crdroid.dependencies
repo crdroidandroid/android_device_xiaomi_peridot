@@ -4,7 +4,7 @@
     "target_path": "hardware/xiaomi"
   },
   {
-    "repository": "crdroidandroid/android_kernel_xiaomi_sm8635-peridot",
+    "repository": "crdroidandroid/android_kernel_xiaomi_sm8635",
     "target_path": "kernel/xiaomi/sm8635"
   },
   {
