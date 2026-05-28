@@ -16,12 +16,16 @@
     "target_path": "kernel/xiaomi/sm8635-modules"
   },
   {
-    "repository": "crdroidandroid/vendor-xiaomi-peridot-miuicamera",
+    "repository": "crdroidandroid/vendor_xiaomi_peridot_miuicamera",
     "target_path": "vendor/xiaomi/peridot-miuicamera"
   },
   {
-    "repository": "crdroidandroid/device-xiaomi-peridot-miuicamera",
+    "repository": "crdroidandroid/device_xiaomi_peridot_miuicamera",
     "target_path": "device/xiaomi/peridot-miuicamera"
+  },
+  {
+    "repository": "crdroidandroid/android_packages_apps_LunarisDolby",
+    "target_path": "packages/apps/LunarisDolby"
   },
   {
     "repository": "crdroidandroid/proprietary_vendor_xiaomi_peridot",
