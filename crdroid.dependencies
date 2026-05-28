@@ -16,6 +16,14 @@
     "target_path": "kernel/xiaomi/sm8635-modules"
   },
   {
+    "repository": "crdroidandroid/vendor-xiaomi-peridot-miuicamera",
+    "target_path": "vendor/xiaomi/peridot-miuicamera"
+  },
+  {
+    "repository": "crdroidandroid/device-xiaomi-peridot-miuicamera",
+    "target_path": "device/xiaomi/peridot-miuicamera"
+  },
+  {
     "repository": "crdroidandroid/proprietary_vendor_xiaomi_peridot",
     "target_path": "vendor/xiaomi/peridot"
   },
