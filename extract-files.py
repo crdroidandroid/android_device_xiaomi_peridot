@@ -124,6 +124,8 @@ blob_fixups: blob_fixups_user_type = {
         'odm/etc/camera/night_motiontuning.xml'
     ): blob_fixup()
         .regex_replace('xml=version', 'xml version'),
+    'odm/lib64/anc.hal.so': blob_fixup()
+        .add_needed('libion.so'),
     (
         'odm/lib64/camera/plugins/com.xiaomi.plugin.gainmap.so',
         'odm/lib64/camera/plugins/com.xiaomi.plugin.jpegrAggr.so',
