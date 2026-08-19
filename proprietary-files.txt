@@ -1247,7 +1247,6 @@ vendor/lib64/vendor.qti.hardware.dpmservice@1.1.so
 odm/lib64/com.qti.qseeaon.so
 odm/lib64/com.qti.qseeutils.so
 vendor/bin/hw/vendor.qti.hardware.qseecom@1.0-service
-vendor/bin/qseecom_sample_client
 vendor/bin/qseecomd
 vendor/bin/qwes_cli
 vendor/bin/ssgqmigd64
