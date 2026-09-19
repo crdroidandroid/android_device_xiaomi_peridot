@@ -8,3 +8,11 @@ ro.vendor.qti.va_aosp.support=1
 media.stagefright.thumbnail.prefer_hw_codecs=true
 ro.media.recorder-max-base-layer-fps=60
 ro.media.xml_variant.profiles=_cliffs_v0
+
+# GPS & Location (Qualcomm Snapdragon 8s Gen 3)
+persist.sys.gps.lpp=15
+persist.sys.gps.fence=true
+persist.sys.gps.selfRecovery=3
+persist.sys.mqs.gps=1
+persist.sys.mqs.gps.rtk=ON
+
